@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .banner {
+            background-color: #009688;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        
+  
+        .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .navbar ul li {
+    margin-right: 100px;
+  }
+  
+  .logo {
+    width: 100px;
+    cursor: pointer;
+  }
+        
+        .suggestion-container {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .suggestion-container h2 {
+            margin-bottom: 20px;
+        }
+        
+        .field {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+        
+        textarea {
+            resize: vertical;
+        }
+        
+        button {
+            background-color: #009688;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        button:hover {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+            <div class="navbar">
+                <a href="index.html"><img src="LOGO.jpg" class="logo"></a>
+                <ul>
+                    <li><a href="front.html">Home</a></li>
+                </ul>
+            </div>
+        <h2>Share Your Feedback</h2>
+    </div>
+
+    <div class="suggestion-container">
+        <p>We value your input and want to constantly improve our garbage detection service. Please share your suggestions and ideas to help us make it even better.</p>
+        <form action="#">
+            <div class="field">
+                <label for="name">Name (Optional):</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="field">
+                <label for="email">Email (Optional):</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="field">
+                <label for="suggestion">Your Suggestion:</label>
+                <textarea id="suggestion" name="suggestion" rows="5" required></textarea>
+            </div>
+            <button type="submit">Submit Suggestion</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classified Images</title>
+    <style>
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Adjust the spacing between cards */
+        margin-top: 20px;
+        padding: 0 10px; /* Add padding to maintain spacing at the edges */
+      }
+
+      .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px; /* Add margin between rows */
+        width: calc(
+          33.33% - 20px
+        ); /* Adjust the width to fit three cards per row */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        position: relative;
+        box-sizing: border-box; /* Include padding and border in the width calculation */
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px; /* Set a fixed height for the image */
+        object-fit: cover; /* Ensure the image covers the entire space */
+        border-radius: 5px;
+      }
+
+      .delete-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User uploads</h1>
+    <div class="card-container" id="card-container"></div>
+
+    <script>
+      // Retrieve the classifiedImages array from localStorage
+      const classifiedImages = JSON.parse(
+        localStorage.getItem("classifiedImages")
+      );
+
+      // Display the classified images as cards
+      const cardContainer = document.getElementById("card-container");
+      classifiedImages.forEach((imageData) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        // Create delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "&times;";
+        deleteButton.classList.add("delete-button");
+        deleteButton.onclick = function () {
+          card.remove();
+        };
+        card.appendChild(deleteButton);
+
+        // Add the image to the card
+        const img = document.createElement("img");
+        img.src = imageData.image;
+        img.alt = "Classified Image";
+        card.appendChild(img);
+
+        // Add the result to the card
+        const resultPara = document.createElement("p");
+        resultPara.textContent = imageData.result;
+        card.appendChild(resultPara);
+
+        // Add the location to the card
+        getLocation(imageData.image, card);
+
+        cardContainer.appendChild(card);
+      });
+
+      function getLocation(imageSrc, card) {
+        const img = new Image();
+        img.onload = function () {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+              const lat = position.coords.latitude;
+              const longi = position.coords.longitude;
+              reverseGeocode(lat, longi, card);
+            });
+          } else {
+            console.log("Geolocation is not supported by this browser.");
+          }
+        };
+        img.src = imageSrc;
+      }
+
+      function reverseGeocode(latitude, longitude, card) {
+        const apiURL =
+          "https://nominatim.openstreetmap.org/reverse?format=json&lat=" +
+          latitude +
+          "&lon=" +
+          longitude +
+          "&zoom=18&addressdetails=1";
+
+        fetch(apiURL)
+          .then((response) => response.json())
+          .then((data) => {
+            const address = data.display_name;
+            displayLocation(address, card);
+          })
+          .catch((error) => {
+            console.log("Error occurred during reverse geocoding:", error);
+          });
+      }
+
+      function displayLocation(address, card) {
+        const locationPara = document.createElement("p");
+        locationPara.textContent = "Location: " + address;
+        card.appendChild(locationPara);
+      }
+    </script>
+    <div id="imageContainer"></div>
+
+    <script>
+      function fetchImages() {
+        fetch("http://localhost:3000/api/images")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            const imageContainer = document.getElementById("imageContainer");
+            data.data.forEach((image) => {
+              const imgElement = document.createElement("img");
+              imgElement.classList.add("card");
+              imgElement.src = image.imageUrl; // Adjust this based on your schema
+              imgElement.alt = "Image";
+              imageContainer.appendChild(imgElement);
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching images:", error);
+          });
+      }
+
+      window.onload = fetchImages;
+    </script>
+  </body>
+</html>

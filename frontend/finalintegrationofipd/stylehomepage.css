@@ -1,0 +1,102 @@
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+.banner {
+    background-color: #343a40;
+    padding: 15px 0;
+}
+.navbar-brand img {
+    max-height: 40px;
+}
+.navbar-nav a {
+    color: #fff;
+}
+.content {
+    padding: 50px 0;
+    text-align: center;
+}
+.content h1 {
+    color: #007bff;
+}
+.content p {
+    font-size: 1.1em;
+}
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+.container .box {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+.forms-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 30px 0;
+}
+.footer-links li {
+    list-style: none;
+}
+.footer-links li a {
+    color: #fff;
+}
+.social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+.social-icons li a {
+    color: #fff;
+    font-size: 1.5em;
+}
+/* Enhanced file input */
+.custom-file-input {
+    color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Select Image';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+.custom-file-input:hover::before {
+    border-color: black;
+}
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.custom-file-input:hover:active::before {
+    border-color: black;
+}
+/* Prediction display */
+#prediction {
+    margin-top: 10px;
+    font-size: 18px;
+}
+#imagePreview {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    max-width: 400px;
+}

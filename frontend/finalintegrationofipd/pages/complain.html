@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Complain - Garbage Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("trashimage.jpg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .banner {
+           background-color: #009688;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            margin-right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+        
+        .navbar ul li {
+            margin-right: 50px;
+        }
+        
+        .logo {
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .complaint-container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .complaint-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea, select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background-color: #009688;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <a href="index.html"><img src="LOGO.jpg" class="logo"></a>
+            <ul>
+                <li><a href="front.html">Home</a></li>
+            </ul>
+        </div>
+        <h2>Welcome to the Page where you can update your complaints!</h2>
+    </div>
+
+    <div class="complaint-container">
+        <h2>File a Complaint</h2>
+        <p>Help us improve our garbage detection service by reporting any issues you encounter.</p>
+        <form action="#">
+            <div class="field">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="field">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="field">
+                <label for="topic">Complaint Topic:</label>
+                <select id="topic" name="topic" required>
+                    <option value="">Select a topic</option>
+                    <option value="missed_detection">Missed Garbage Detection</option>
+                    <option value="incorrect_categorization">Incorrect Categorization</option>
+                    <option value="app_malfunction">App Malfunction</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="description">Complaint Description:</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+            </div>
+            <div class="field">
+                <label for="image">Upload Image (Optional):</label>
+                <input type="file" id="image" name="image">
+            </div>
+            <button type="submit">Submit Complaint</button>
+        </form>
+    </div>
+</body>
+</html>

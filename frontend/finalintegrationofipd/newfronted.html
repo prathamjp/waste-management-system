@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garbage Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylehomepage.css">
+    
+</head>
+<body>
+<div class="banner">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="LOGO.jpg" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="pages/about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/complain.html">Complaint</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/suggestions.html">Suggestions</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="showCards()" href="classified_images.html">viewimages</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="content">
+    <div class="container">
+        <h1>Know your waste</h1>
+        <p>The uploaded photo of the waste would make the authorities understand the amount of waste and take actions accordingly.</p>
+        <div class="button-container">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" accept="image/*" onchange="previewImage(event)" id="attachment" name="attachment">
+                <label class="custom-file-label" for="inputImage">Choose file</label>
+            </div>
+        <!-- <button type="hidden" id="uploadButton">Upload</button> -->
+        </div>
+    </div>
+</div>
+
+<div id="prediction" class="text-center"></div>
+<img id="imagePreview" src="" alt="Image Preview">
+
+    <div class="content">
+        <h1>What we do!</h1>
+        <p>Trashtrek introduces an innovative garbage classification system utilizing image processing techniques. Users can manually capture and upload photos of waste to a dedicated website, where the system employs image processing algorithms to analyze and classify the garbage. The output provides a percentage breakdown of clean and dirty areas, offering a user-friendly and technology-driven approach to enhance waste management practices.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box">
+                <h2>Step-1</h2>
+                <p>Users can manually capture and upload photos of waste to a dedicated website, where the system employs image processing algorithms to analyze and classify the garbage.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box">
+                <h2>Step-2</h2>
+                <p>The output provides a percentage breakdown of clean and dirty areas, offering a user-friendly and technology-driven approach to enhance waste management practices.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box">
+                <h2>Step-3</h2>
+                <p>Now the percentage of trash is detected as you upload the photo
+                    , if the percentage is above 60, then the image as well as the location of the trash is shared with the authorities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <h1>Garbage Management Awareness</h1>
+        <p>Proper garbage management is crucial for maintaining environmental sustainability and public health. The mismanagement of waste can lead to pollution, spread of diseases, and harm to wildlife. It is essential to raise awareness about the importance of reducing, reusing, and recycling waste to minimize its impact on our planet.</p>
+        <p>Join us in our mission to promote responsible waste disposal practices and create a cleaner, healthier environment for future generations.</p>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box">
+                    <h2>The Crisis of Garbage Management</h2>
+                    <p>Many cities around the world are facing a crisis in garbage management due to increasing urbanization and population growth. Overflowing landfills, uncontrolled dumping, and inadequate waste infrastructure pose significant challenges to sustainable waste management.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h2>Impact on Environment and Health</h2>
+                    <p>Improper disposal of waste contributes to air, water, and soil pollution, leading to adverse effects on ecosystems and human health. Toxins released from landfills and incinerators can contaminate water sources and cause respiratory illnesses and other health problems.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h2>Our Commitment</h2>
+                    <p>At Trashtrek, we are committed to developing innovative solutions for effective waste management. Through technology-driven approaches and community engagement, we aim to address the challenges of garbage management and create a sustainable future for all.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <h1>Watch Our Video</h1>
+        <div class="video-container">
+            <iframe width="600px" height="500px" src="https://www.youtube.com/embed/Qyu-fZ8BOnI?si=62DodnXXg3KKb9Rt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+    <form id="contactForm" action="http://localhost:3001/send" method="post" enctype="multipart/form-data">
+        
+        
+        <!-- Hidden input field for prediction result -->
+        <input type="hidden" id="predictionResult" name="predictionResult">
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+      
+      </form>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Trashtrek</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Complaint</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Useful Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Contact Us</h4>
+                    <p>DJ Sanghavi College of Engineering,<br>Mumbai</p>
+                    <p><a href="#">trashtrek@gmail.com</a></p>
+                    <p><a href="#">xxxxxxxxxx</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Social Media</h4>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script>
+        let classifiedImages = [];
+
+        async function loadModel() {
+            const model = await tf.loadLayersModel('model.json');
+            return model;
+        }
+
+        async function predict(model, imageElement) {
+            const image = tf.browser.fromPixels(imageElement).resizeBilinear([256, 256]).toFloat().div(255);
+            const prediction = await model.predict(image.expandDims(0));
+            console.log(prediction);
+            const predictionResult = prediction.dataSync()[0];
+            console.log(predictionResult);
+
+            let resultText = "";
+            if(predictionResult > 0.5) {
+                resultText = `Garbage is detected with probability ${predictionResult * 100}%`;
+                console.log(predictionResult);//prediction variable
+                classifiedImages.push({image: imageElement.src, result: resultText});
+                const position = await getGeolocation();
+                const { latitude, longitude } = position.coords;
+                document.getElementById('latitude').value = latitude;
+                document.getElementById('longitude').value = longitude;
+                const name = "TRASHTREK";
+                const email = "trashtrek@gmail.com";
+                const message = "THE TRASH IS DETECTED PLZ FIND THE BELOW ATTACHMENT";
+                console.log(`Garbage is detected with probability ${predictionResult * 100}%`)
+                // Create a FormData object
+                uploadImage(predictionResult);
+                const formData = new FormData();
+                formData.append('predictionResult', `Garbage is detected with probability ${predictionResult * 100}%`);
+                formData.append('latitude', latitude);//
+                formData.append('longitude', longitude);//
+                formData.append('attachment', document.getElementById('attachment').files[0]);
+                formData.append('prediction',`${predictionResult}`);
+
+                // Send the form data
+                fetch('http://localhost:3001/send', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                resultText = `Clean area is detected with probability ${(100 - predictionResult * 100)}%`;
+            }
+
+            document.getElementById('prediction').innerText = `Prediction: ${resultText}`;
+        }
+
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            reader.onload = function(){
+                const imgElement = document.getElementById('imagePreview');
+                imgElement.src = reader.result;
+                loadModel().then(model => predict(model, imgElement));
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function showCards() {
+            // Store the classifiedImages array in localStorage
+            localStorage.setItem('classifiedImages', JSON.stringify(classifiedImages));
+            // Redirect to the page displaying the cards
+            window.location.href = 'classified_images.html';
+        }
+
+        async function getGeolocation() {
+            return new Promise((resolve, reject) => {
+                if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+                } else {
+                reject(new Error('Geolocation is not supported by this browser.'));
+                }
+            });
+        }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+    
